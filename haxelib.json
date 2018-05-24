@@ -1,0 +1,14 @@
+{
+  "name": "hxnodejs-ws",
+  "url": "https://github.com/proletariatgames/hxnodejs-ws",
+  "license": "MIT",
+  "classPath": "src",
+  "tags": ["nodejs", "ws", "websockets"],
+  "description": "Externs for the ws NPM module",
+  "releasenote": "Initial release",
+  "version": "5.2.0",
+  "contributors": ["Proletariat", "danogles", "waneck"],
+  "dependencies": {
+    "hxnodejs": ""
+  }
+}
