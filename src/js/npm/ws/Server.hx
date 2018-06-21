@@ -91,7 +91,7 @@ typedef ServerOptions = {
   /**
   The hostname where to bind the server.
   **/
-  var host:String;
+  @:optional var host:String;
 
   /**
   The port where to bind the server.
@@ -106,7 +106,7 @@ typedef ServerOptions = {
   /**
   A pre-created Node.js HTTP/S server.
   **/
-  @:optional var server:EitherType<js.node.http.Server,js.node.https.Server>,
+  @:optional var server:EitherType<js.node.http.Server,js.node.https.Server>;
 
   /**
     A function which can be used to validate incoming connections.
@@ -119,7 +119,7 @@ typedef ServerOptions = {
         For example, { 'Retry-After': 120 }.
   **/
   @:optional var verifyClient:EitherType<
-    VerifyClientObject->Void,
+    VerifyClientObject->Bool,
     VerifyClientObject->(Bool->Null<Int>->String->haxe.DynamicAccess<String>->Void)->Void
   >;
 

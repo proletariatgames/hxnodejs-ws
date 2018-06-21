@@ -31,9 +31,33 @@ abstract Data(Dynamic)
       throw 'Cannot get fragments when bufferType is ${ws.binaryType}';
     }
   }
+
+  inline public function isBinary()
+  {
+    return !Std.is(this, String);
+  }
+
+  inline public function asString():String
+  {
+    if (!Std.is(this, String))
+    {
+      throw 'Cannot cast $this to String';
+    }
+    return this;
+  }
 }
 
 @:enum abstract WebSocketEvent<T:haxe.Constraints.Function>(Event<T>) to Event<T> {
+  /**
+  Event: 'close'
+
+      code {Number}
+      reason {String}
+
+  Emitted when the connection is closed. code is a numeric value indicating the status code explaining
+  why the connection has been closed. reason is a human-readable string explaining why the connection has been closed.
+  **/
+  var Close:WebSocketEvent<Int->String->Void> = 'close';
   /**
   Event: 'error'
 
