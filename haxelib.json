@@ -5,8 +5,8 @@
   "classPath": "src",
   "tags": ["nodejs", "ws", "websockets"],
   "description": "Externs for the ws NPM module",
-  "releasenote": "Initial release",
-  "version": "5.2.1-alpha",
+  "releasenote": "Port is not always required",
+  "version": "5.2.1-beta",
   "contributors": ["Proletariat", "danogles", "waneck"],
   "dependencies": {
     "hxnodejs": ""

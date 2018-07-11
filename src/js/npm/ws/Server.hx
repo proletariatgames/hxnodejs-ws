@@ -96,7 +96,7 @@ typedef ServerOptions = {
   /**
   The port where to bind the server.
   **/
-  var port:Int;
+  @:optional var port:Int;
 
   /**
   The maximum length of the queue of pending connections.
