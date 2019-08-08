@@ -22,7 +22,7 @@ import js.node.http.*;
 
     Emitted when an error occurs on the underlying server.
   **/
-  var Error:ServerEvent<js.Error->Void> = 'error';
+  var Error:ServerEvent<js.lib.Error->Void> = 'error';
 
   /**
     Event: 'headers'
