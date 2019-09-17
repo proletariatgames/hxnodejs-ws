@@ -5,7 +5,7 @@ import js.node.events.EventEmitter;
 abstract Data(Dynamic)
   from js.node.Buffer
   from String
-  from js.html.ArrayBuffer
+  from js.lib.ArrayBuffer
   from Array<js.node.Buffer>
 {
   inline public function asBuffer(ws:WebSocket):js.node.Buffer {
@@ -16,7 +16,7 @@ abstract Data(Dynamic)
     }
   }
 
-  inline public function asArrayBuffer(ws:WebSocket):js.html.ArrayBuffer {
+  inline public function asArrayBuffer(ws:WebSocket):js.lib.ArrayBuffer {
     if (ws.binaryType == ArrayBuffer) {
       return this;
     } else {
@@ -65,7 +65,7 @@ abstract Data(Dynamic)
 
   Emitted when an error occurs.
   **/
-  var Error:WebSocketEvent<js.Error->Void> = 'error';
+  var Error:WebSocketEvent<js.lib.Error->Void> = 'error';
 
   /**
   Event: 'message'
@@ -172,8 +172,8 @@ extern class WebSocket extends EventEmitter<WebSocket> {
   @:overload(function(data:Data, mask:Bool):Void {})
   @:overload(function(data:Data):Void {})
   @:overload(function():Void {})
-  @:overload(function(data:Data, callback:js.Error->Void):Void {})
-  @:overload(function(callback:js.Error->Void):Void {})
+  @:overload(function(data:Data, callback:js.lib.Error->Void):Void {})
+  @:overload(function(callback:js.lib.Error->Void):Void {})
   public function ping(data:Data, mask:Bool, callback:Void->Void):Void;
 
   /**
@@ -188,8 +188,8 @@ extern class WebSocket extends EventEmitter<WebSocket> {
   @:overload(function(data:Data, mask:Bool):Void {})
   @:overload(function(data:Data):Void {})
   @:overload(function():Void {})
-  @:overload(function(data:Data, callback:js.Error->Void):Void {})
-  @:overload(function(callback:js.Error->Void):Void {})
+  @:overload(function(data:Data, callback:js.lib.Error->Void):Void {})
+  @:overload(function(callback:js.lib.Error->Void):Void {})
   public function pong(data:Data, mask:Bool, callback:Void->Void):Void;
 
   /**
@@ -224,8 +224,8 @@ extern class WebSocket extends EventEmitter<WebSocket> {
   Send data through the connection.
   **/
   @:overload(function(data:Data, options:WebSocketOptions):Void {})
-  @:overload(function(data:Data, callback:js.Error->Void):Void {})
-  public function send(data:Data, options:WebSocketOptions, callback:js.Error->Void):Void;
+  @:overload(function(data:Data, callback:js.lib.Error->Void):Void {})
+  public function send(data:Data, options:WebSocketOptions, callback:js.lib.Error->Void):Void;
 
   /**
   websocket.terminate()
