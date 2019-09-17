@@ -1,11 +1,18 @@
 package js.npm.ws;
 import haxe.extern.EitherType;
 import js.node.events.EventEmitter;
+#if haxe4
+import js.lib.ArrayBuffer;
+import js.lib.Error;
+#else
+import js.html.ArrayBuffer;
+import js.Error;
+#end
 
 abstract Data(Dynamic)
   from js.node.Buffer
   from String
-  from js.lib.ArrayBuffer
+  from ArrayBuffer
   from Array<js.node.Buffer>
 {
   inline public function asBuffer(ws:WebSocket):js.node.Buffer {
@@ -16,7 +23,7 @@ abstract Data(Dynamic)
     }
   }
 
-  inline public function asArrayBuffer(ws:WebSocket):js.lib.ArrayBuffer {
+  inline public function asArrayBuffer(ws:WebSocket):ArrayBuffer {
     if (ws.binaryType == ArrayBuffer) {
       return this;
     } else {
@@ -65,7 +72,7 @@ abstract Data(Dynamic)
 
   Emitted when an error occurs.
   **/
-  var Error:WebSocketEvent<js.lib.Error->Void> = 'error';
+  var Error:WebSocketEvent<Error->Void> = 'error';
 
   /**
   Event: 'message'
@@ -172,8 +179,8 @@ extern class WebSocket extends EventEmitter<WebSocket> {
   @:overload(function(data:Data, mask:Bool):Void {})
   @:overload(function(data:Data):Void {})
   @:overload(function():Void {})
-  @:overload(function(data:Data, callback:js.lib.Error->Void):Void {})
-  @:overload(function(callback:js.lib.Error->Void):Void {})
+  @:overload(function(data:Data, callback:Error->Void):Void {})
+  @:overload(function(callback:Error->Void):Void {})
   public function ping(data:Data, mask:Bool, callback:Void->Void):Void;
 
   /**
@@ -188,8 +195,8 @@ extern class WebSocket extends EventEmitter<WebSocket> {
   @:overload(function(data:Data, mask:Bool):Void {})
   @:overload(function(data:Data):Void {})
   @:overload(function():Void {})
-  @:overload(function(data:Data, callback:js.lib.Error->Void):Void {})
-  @:overload(function(callback:js.lib.Error->Void):Void {})
+  @:overload(function(data:Data, callback:Error->Void):Void {})
+  @:overload(function(callback:Error->Void):Void {})
   public function pong(data:Data, mask:Bool, callback:Void->Void):Void;
 
   /**
@@ -224,8 +231,8 @@ extern class WebSocket extends EventEmitter<WebSocket> {
   Send data through the connection.
   **/
   @:overload(function(data:Data, options:WebSocketOptions):Void {})
-  @:overload(function(data:Data, callback:js.lib.Error->Void):Void {})
-  public function send(data:Data, options:WebSocketOptions, callback:js.lib.Error->Void):Void;
+  @:overload(function(data:Data, callback:Error->Void):Void {})
+  public function send(data:Data, options:WebSocketOptions, callback:Error->Void):Void;
 
   /**
   websocket.terminate()

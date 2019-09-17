@@ -2,6 +2,11 @@ package js.npm.ws;
 import haxe.extern.EitherType;
 import js.node.events.EventEmitter;
 import js.node.http.*;
+#if haxe4
+import js.lib.Error;
+#else
+import js.Error;
+#end
 
 @:enum abstract ServerEvent<T:haxe.Constraints.Function>(Event<T>) to Event<T> {
   /**
@@ -22,7 +27,7 @@ import js.node.http.*;
 
     Emitted when an error occurs on the underlying server.
   **/
-  var Error:ServerEvent<js.lib.Error->Void> = 'error';
+  var Error:ServerEvent<Error->Void> = 'error';
 
   /**
     Event: 'headers'

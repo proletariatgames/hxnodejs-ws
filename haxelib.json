@@ -5,8 +5,8 @@
   "classPath": "src",
   "tags": ["nodejs", "ws", "websockets"],
   "description": "Externs for the ws NPM module",
-  "releasenote": "Port is not always required",
-  "version": "5.2.1-beta",
+  "releasenote": "Haxe 4 update",
+  "version": "5.2.2",
   "contributors": ["Proletariat", "danogles", "waneck"],
   "dependencies": {
     "hxnodejs": ""
